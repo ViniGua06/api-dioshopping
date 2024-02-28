@@ -1,14 +1,12 @@
 import { getCustomRepository } from "typeorm";
 import { MessagesRepository } from "../repository/MessagesRepository";
 
-class ListMessageService {
-  async execute() {
+class DeleteMessageService {
+  async execute(id: string) {
     const messageRepository = getCustomRepository(MessagesRepository);
 
-    const allMessages = await messageRepository.find();
-
-    return allMessages;
+    await messageRepository.delete(id);
   }
 }
 
-export { ListMessageService };
+export { DeleteMessageService };
